@@ -30,15 +30,9 @@ public class JavaJobBot extends SpringWebhookBot {
 
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
-        return update.getMessage() == null ?
-                new SendMessage(update.getMessage().getChatId().toString(), BotMessageEnum.EMPTY_COMMAND.getMessage()) :
-                answerMessage(update.getMessage());
-    }
-
-    private BotApiMethod<?> answerMessage(Message message) {
-        var chatId = message.getChatId().toString();
-        return Strings.isNullOrEmpty(message.getText()) ? new SendMessage(chatId, BotMessageEnum.EMPTY_COMMAND.getMessage()) :
-                switch (message.getText()) {
+        var chatId = update.getMessage().getChatId().toString();
+        return Strings.isNullOrEmpty(update.getMessage().getText()) ? new SendMessage(chatId, BotMessageEnum.EMPTY_COMMAND.getMessage()) :
+                switch (update.getMessage().getText()) {
                     case "/start" -> getStartMessage(chatId);
                     case "Основная информация" -> getMainMessage(chatId);
                     case "Записаться на звонок" -> getCallMessage(chatId);
