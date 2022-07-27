@@ -1,5 +1,0 @@
-telegram:
-  api-url: "https://api.telegram.org/"
-  webhook-path: "https://easyjavajobbot.herokuapp.com/"
-  bot-name: "@EasyJavaJobBot>"
-  bot-token: "5456671855:AAFG7AlYSc8C4fb5suLaVmhJFRnWgtR4vQM>"
